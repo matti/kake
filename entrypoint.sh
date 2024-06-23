@@ -24,5 +24,12 @@ _shutdown() {
 trap _shutdown TERM INT ERR
 
 
+(
+  exec cage -d -- /usr/bin/wayvnc 0.0.0.0 5900
+) &
+
+sleep 1
+wlclock &
+
 echo "hang"
 tail -f /dev/null & wait
